@@ -1,35 +1,33 @@
 package com.project.ecom.service;
 
 import com.project.ecom.dtos.UserDto;
-import com.project.ecom.entities.User;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface UserService {
-    // create
+
+    // Create a new user
     UserDto createUser(UserDto userDto);
 
-    //update
-    UserDto updateUser(UserDto userDto,String userId);
+    // Update existing user
+    UserDto updateUser(UserDto userDto, String userId);
 
-
-
-    //delete
+    // Delete user by ID
     void deleteUser(String userId);
 
-    //get all users
+    // Get all users (non-paginated)
     List<UserDto> getAllUsers();
 
+    // Get all users with pagination and sorting
+    Page<UserDto> getAllUsers(int pageNumber, int pageSize, String sortBy, String sortDir);
 
-    //get single user using id/email
+    // Get user by ID
     UserDto getUserById(String userId);
-    UserDto getUserByEmail(String userEmail);
 
+    // Get user by email
+    UserDto getUserByEmail(String email);
 
-    // search user
-
+    // Search users by keyword in name
     List<UserDto> searchUser(String keyword);
-
-
-
 }
